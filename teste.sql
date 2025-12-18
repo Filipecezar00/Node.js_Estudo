@@ -1,5 +1,9 @@
-CREATE TABLE usuarios(
-nome VARCHAR(50),
-email VARCHAR(100),
-idade INT 
-);
+INSERT INTO usuarios(nome,email,idade) VALUES(
+    "Pedro lucas pinho",
+    "pedro@teste.com", 
+    18 
+); 
+
+SELECT * FROM usuarios WHERE idade = 18; 
+SELECT * FROM usuarios WHERE nome = "Filipe Cezar"; 
+SELECT * FROM usuarios WHERE idade >= 18;
