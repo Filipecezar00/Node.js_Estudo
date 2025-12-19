@@ -1,8 +1,10 @@
 const express = require("express"); 
 const app = express(); 
 const {engine} = require('express-handlebars')
-require("dotenv").config(); 
-const Sequelize = require("sequelize"); 
+
+const db = require("./db"); 
+
+const Post = require("./posts"); 
 
  // Config 
     // Template Engine 
@@ -11,18 +13,19 @@ const Sequelize = require("sequelize");
     app.set("views","./views"); 
 
 //  conexão com o SQL
-const sequelize = new Sequelize(
-    process.env.DB_NAME,
-    process.env.DB_USER,
-    process.env.DB_PASS,
-    {
-        host: process.env.DB_HOST,
-        dialect: "mysql"
-    }
-); 
+
 app.get("/cad",(req,res)=>{
     res.render("formulario");
 })
+
+db.sequelize.sync() 
+.then(()=>{
+    console.log("Tabela Criada"); 
+})
+.catch(err=>console.log("Erro ao Criar Tabela:" + err))
+
+
+
 app.listen(8081,()=>{
     console.log("Servidor Rodando em http://localhost:8081"); 
 }); 
