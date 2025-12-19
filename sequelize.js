@@ -25,8 +25,6 @@ const Postagem = sequelize.define("postagens",{
     }
 })
 
-
-
 const Usuario = sequelize.define('usuarios',{
     nome:{
         type:Sequelize.STRING 

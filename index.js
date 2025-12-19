@@ -1,21 +1,25 @@
 const express = require("express"); 
 const app = express(); 
- 
-app.get("/",function(req,res){
-res.sendFile(__dirname + "/html/index.html"); 
-})
+const handlebars = require('express-handlebars')
+require("dotenv").config(); 
+const { type } = require("os");
+const Sequelize = require("sequelize"); 
 
-app.get("/sobre",function(req,res){
-    res.sendFile(__dirname + "/html/sobre.html")
-})
+ // Config 
+    // Template Engine 
+    app.engine("handle-bars",handlebars({defaultLayout:'main'}))
+    app.set("view engine",'handlebars')
 
-app.get("/blog",function(req,res){
-    res.send("Bem vindo ao Meu blog!"); 
-})
-
-app.get("/ola/:nome/:cargo/:cor",function(req,res){
-    res.send("<h1> Olá "+req.params.nome + "</h1>" +  "<h2> Seu cargo é: " + req.params.cargo + "</h2>" + "<h3> Sua Cor favorita é:  " + req.params.cor + "</h2>"); 
-})
+//  conexão com o SQL
+const sequelize = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASS,
+    {
+        host: process.env.DB_HOST,
+        dialect: "mysql"
+    }
+); 
 
 app.listen(8081,function(){
     console.log("Servidor Rodando em http://localhost:8081"); 
