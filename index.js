@@ -1,14 +1,14 @@
 const express = require("express"); 
 const app = express(); 
-const handlebars = require('express-handlebars')
+const {engine} = require('express-handlebars')
 require("dotenv").config(); 
-const { type } = require("os");
 const Sequelize = require("sequelize"); 
 
  // Config 
     // Template Engine 
-    app.engine("handle-bars",handlebars({defaultLayout:'main'}))
-    app.set("view engine",'handlebars')
+    app.engine("handlebars",engine({defaultLayout:"main"}));
+    app.set("view engine",'handlebars');
+    app.set("views","./views"); 
 
 //  conexão com o SQL
 const sequelize = new Sequelize(
@@ -20,7 +20,9 @@ const sequelize = new Sequelize(
         dialect: "mysql"
     }
 ); 
-
-app.listen(8081,function(){
+app.get("/cad",(req,res)=>{
+    res.render("formulario");
+})
+app.listen(8081,()=>{
     console.log("Servidor Rodando em http://localhost:8081"); 
 }); 
