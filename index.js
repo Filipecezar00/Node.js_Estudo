@@ -4,6 +4,7 @@ const {engine} = require('express-handlebars');
 const bodyParser = require("body-parser"); 
 const db = require("./db"); 
 const Post = require("./posts"); 
+const { where } = require("sequelize");
 
  // Config 
     // Template Engine 
@@ -46,6 +47,17 @@ db.sequelize.sync()
     console.log("Tabela Criada"); 
 })
 .catch(err=>console.log("Erro ao Criar Tabela:" + err))
+
+app.get('/delete/:id',function(req,res){
+Post.destroy({where:{"id":req.params.id}}).then(result=>{
+  if(result===0){
+    return res.send("Exclusão bem sucedida")
+  }
+  res.send("Postagem excluida, retorne a página principal !")
+}).catch(err=>{
+    res.send("Erro ao deletar: " + err)
+    }); 
+}); 
 
 app.listen(8081,()=>{
     console.log("Servidor Rodando em http://localhost:8081"); 
