@@ -22,13 +22,13 @@ app.get("/",function(req,res){
 Post.findAll({raw:true})
 .then(posts=>{
     res.render('home',{posts}); 
-})
+}); 
 }); 
 
 //  conexão com o SQL
 app.get("/cad",(req,res)=>{
     res.render("formulario");
-})
+}); 
 
 app.post('/add',(req,res)=>{
 console.log(req.body); 
