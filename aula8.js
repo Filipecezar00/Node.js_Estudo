@@ -8,5 +8,9 @@ const conectar = async ()=>{
     global.conexao = con 
     return con 
 }
-conectar()
-module.exports = {}
+const todosClientes = async()=>{
+    const com = await conectar()
+    const [linhas] = await con.query('SELECT * FROM cliente_node')
+    return await linhas 
+}
+module.exports = {todosClientes}
