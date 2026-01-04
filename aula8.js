@@ -9,8 +9,14 @@ const conectar = async ()=>{
     return con 
 }
 const todosClientes = async()=>{
-    const com = await conectar()
+    const con = await conectar()
     const [linhas] = await con.query('SELECT * FROM cliente_node')
-    return await linhas 
+    return linhas 
 }
-module.exports = {todosClientes}
+const insereCliente = async(cliente)=>{
+    const con = await conectar()
+    const sql = 'INSERT INTO cliente_node (nome,idade)  VALUES (?,?); ' 
+    const valores = [cliente.nome, cliente.idade] 
+    return con.query(sql,valores)  
+}
+module.exports = {todosClientes,insereCliente} 
