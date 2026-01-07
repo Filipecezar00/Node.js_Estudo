@@ -18,11 +18,11 @@ try{
     
     
    
-    // const obj = {curso:"Curso de IA",linguagem:"Phyton"} 
+     const obj = {curso:"Curso de IA",linguagem:"Phyton"} 
 
-    // const resultado = await dbo.collection(colecao).insertOne(obj) 
+     const result = await dbo.collection(colecao).insertOne(obj) 
 
-    // console.log("1 Novo curso inserido com o ID: " + resultado.insertedId)
+     console.log("1 Novo curso inserido com o ID: " + result.insertedId)
 } catch(erro){
     console.error("Erro na operação: ", erro); 
 }finally{
