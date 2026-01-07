@@ -12,13 +12,13 @@ try{
     const dbo = client.db("Cursos")
     const query = {linguagem:/.t/} 
 
-     const obj = [
-        {curso:"Curso front end enginner",linguagem:"Javascript"}, 
-        {curso:"Curso front end enginner",linguagem:"Javascript"}, 
-        {curso:"Curso front end enginner",linguagem:"Javascript"} 
-     ]
-     const result = await dbo.collection(colecao).insertMany(obj) 
-     console.log("Novos Cursos inseridos" + result.insertedCount)
+    //  const obj = [
+    //     {curso:"Curso front end enginner",linguagem:"Javascript"}, 
+    //     {curso:"Curso front end enginner",linguagem:"Javascript"}, 
+    //     {curso:"Curso front end enginner",linguagem:"Javascript"} 
+    //  ]
+    //  const result = await dbo.collection(colecao).insertMany(obj) 
+    //  console.log("Novos Cursos inseridos" + result.insertedCount)
 
     // const resultado = await dbo.collection(colecao).find(query).toArray()  
     // console.log("Cursos Encontrados"); 
@@ -40,8 +40,12 @@ try{
 
      console.log("------------- Lista de cursos em ordem alfabetica -------------")
      console.table(queryanswer)
-    
-     
+      
+     let query3 = {curso:/.t/}; 
+     let novoObj = { $set: {curso:'Curso de Hardware'}};   
+     const queryanswer3 = await dbo.collection(colecao).updateOne(query3,novoObj); 
+     console.log(`${queryanswer3.modifiedCount} Curso Devidamente Atualizado`); 
+
 } catch(erro){
     console.error("Erro na operação: ", erro); 
 }finally{
