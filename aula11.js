@@ -12,9 +12,13 @@ try{
     const dbo = client.db("Cursos")
     const query = {linguagem:/.t/} 
 
-    //  const obj = {curso:"Curso front end enginner",linguagem:"Javascript"} 
-    //  const result = await dbo.collection(colecao).insertOne(obj) 
-    //  console.log("1 Novo curso inserido com o ID: " + result.insertedId)
+     const obj = [
+        {curso:"Curso front end enginner",linguagem:"Javascript"}, 
+        {curso:"Curso front end enginner",linguagem:"Javascript"}, 
+        {curso:"Curso front end enginner",linguagem:"Javascript"} 
+     ]
+     const result = await dbo.collection(colecao).insertMany(obj) 
+     console.log("Novos Cursos inseridos" + result.insertedCount)
 
     // const resultado = await dbo.collection(colecao).find(query).toArray()  
     // console.log("Cursos Encontrados"); 
@@ -26,9 +30,9 @@ try{
     //  })
     //  console.log(`${deleteResult} Dado Deletado!`)
 
-    const queryDelete = {linguagem:'Javascript'};
-    const resultMany = await dbo.collection(colecao).deleteMany(queryDelete) ;
-    console.log(`${resultMany.deletedCount} Todos os Cursos de JavaScript foram Removidos`); 
+    // const queryDelete = {linguagem:'Javascript'};
+    // const resultMany = await dbo.collection(colecao).deleteMany(queryDelete) ;
+    // console.log(`${resultMany.deletedCount} Todos os Cursos de JavaScript foram Removidos`); 
 
      const ordenacao = {curso:1}
      const query2 = {}
@@ -36,8 +40,8 @@ try{
 
      console.log("------------- Lista de cursos em ordem alfabetica -------------")
      console.table(queryanswer)
-
     
+     
 } catch(erro){
     console.error("Erro na operação: ", erro); 
 }finally{
