@@ -12,7 +12,7 @@ try{
     const dbo = client.db("Cursos")
     const query = {linguagem:/.t/} 
 
-    //  const obj = {curso:"Curso Banco de dados",linguagem:"SQL"} 
+    //  const obj = {curso:"Curso front end enginner",linguagem:"Javascript"} 
     //  const result = await dbo.collection(colecao).insertOne(obj) 
     //  console.log("1 Novo curso inserido com o ID: " + result.insertedId)
 
@@ -20,11 +20,15 @@ try{
     // console.log("Cursos Encontrados"); 
     // console.log(resultado); 
 
-     const deleteId = '695e63e28521611aa4be7801'
-     const deleteResult = await dbo.collection(colecao).deleteOne({
-        _id: new ObjectId(deleteId) 
-     })
-     console.log(`${deleteResult} Dado Deletado!`)
+    //  const deleteId = '695e63e28521611aa4be7801'
+    //  const deleteResult = await dbo.collection(colecao).deleteOne({
+    //     _id: new ObjectId(deleteId) 
+    //  })
+    //  console.log(`${deleteResult} Dado Deletado!`)
+
+    const queryDelete = {linguagem:'Javascript'};
+    const resultMany = await dbo.collection(colecao).deleteMany(queryDelete) ;
+    console.log(`${resultMany.deletedCount} Todos os Cursos de JavaScript foram Removidos`); 
 
      const ordenacao = {curso:1}
      const query2 = {}
