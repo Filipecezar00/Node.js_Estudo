@@ -41,10 +41,15 @@ try{
      console.log("------------- Lista de cursos em ordem alfabetica -------------")
      console.table(queryanswer)
       
-     let query3 = {curso:/.t/}; 
-     let novoObj = { $set: {curso:'Curso de Hardware'}};   
-     const queryanswer3 = await dbo.collection(colecao).updateOne(query3,novoObj); 
-     console.log(`${queryanswer3.modifiedCount} Curso Devidamente Atualizado`); 
+//      let query3 = {curso:/.t/}; 
+//      let novoObj = { $set: {curso:'Curso de Hardware'}};   
+//      const queryanswer3 = await dbo.collection(colecao).updateOne(query3,novoObj); 
+//      console.log(`${queryanswer3.modifiedCount} Curso Devidamente Atualizado`); 
+
+    let query4 = {curso:/.t/}
+    let novoObj = {$set:{curso:"Curso de Linux"}}
+    const queryanswer4=await dbo.collection(colecao).updateMany(query4,novoObj)
+    console.log(`${queryanswer4.modifiedCount} Cursos Atualizados`)
 
 } catch(erro){
     console.error("Erro na operação: ", erro); 
