@@ -32,7 +32,7 @@ try{
         {idcurso:5,aulas:44}, 
         {idcurso:6,aulas:120} 
      ]
-     const result2 = await dbo.collection(colecao).insertMany(obj)
+     const result2 = await dbo.collection(colecao2).insertMany(obj)
      console.log("Detalhes dos Cursos" + obj) 
 
     // const resultado = await dbo.collection(colecao).find(query).toArray()  
@@ -50,7 +50,7 @@ try{
     // console.log(`${resultMany.deletedCount} Todos os Cursos de JavaScript foram Removidos`); 
 
      const ordenacao = {curso:1}
-     const query2 = {}
+     const query2={}
      const queryanswer = await dbo.collection(colecao).find(query2).sort(ordenacao).toArray()
 
      console.log("------------- Lista de cursos em ordem alfabetica -------------")
