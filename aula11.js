@@ -9,16 +9,31 @@ try{
     console.log("Conectado ao Banco de Dados"); 
 
     const colecao = 'Cursos'; 
+    const colecao2 = 'detalhesCursos'
     const dbo = client.db("Cursos")
     const query = {linguagem:/.t/} 
 
-    //  const obj = [
-    //     {curso:"Curso front end enginner",linguagem:"Javascript"}, 
-    //     {curso:"Curso front end enginner",linguagem:"Javascript"}, 
-    //     {curso:"Curso front end enginner",linguagem:"Javascript"} 
-    //  ]
-    //  const result = await dbo.collection(colecao).insertMany(obj) 
-    //  console.log("Novos Cursos inseridos" + result.insertedCount)
+     let obj = [
+        {idcurso:1,curso:"Curso React",linguagem:"Javascript"}, 
+        {idcurso:2,curso:"Curso Windows",linguagem:"C++"}, 
+        {idcurso:3,curso:"Curso Java",linguagem:"Java"},
+        {idcurso:4,curso:"Curso Express.js",linguagem:"Javascript"},
+        {idcurso:5,curso:"Curso Kotlin",linguagem:"Kotlin"}, 
+        {idcurso:6,curso:"Angular",linguagem:"Javascript"}
+     ]
+     const result = await dbo.collection(colecao).insertMany(obj) 
+     console.log("Novos Cursos inseridos" + result.insertedCount)
+
+     obj=[
+        {idcurso:1,aulas:40}, 
+        {idcurso:2,aulas:50}, 
+        {idcurso:3,aulas:20}, 
+        {idcurso:4,aulas:35}, 
+        {idcurso:5,aulas:44}, 
+        {idcurso:6,aulas:120} 
+     ]
+     const result2 = await dbo.collection(colecao).insertMany(obj)
+     console.log("Detalhes dos Cursos" + obj) 
 
     // const resultado = await dbo.collection(colecao).find(query).toArray()  
     // console.log("Cursos Encontrados"); 
@@ -46,12 +61,13 @@ try{
 //      const queryanswer3 = await dbo.collection(colecao).updateOne(query3,novoObj); 
 //      console.log(`${queryanswer3.modifiedCount} Curso Devidamente Atualizado`); 
 
-const limite = 3
-const query4 = {}
-const queryanswer4 = await dbo.collection(colecao).find(query4,{projection:{_id:0}}).limit(limite).toArray() 
-console.log("-----------------------Resultados Com Limite----------------------------")
-console.table(queryanswer4); 
-console.log(`Foram Encontrados ${queryanswer4.length} itens (Limite máximo: ${limite})`);
+// const limite = 3
+// const query4 = {}
+// const queryanswer4 = await dbo.collection(colecao).find(query4,{projection:{_id:0}}).limit(limite).toArray() 
+// console.log("-----------------------Resultados Com Limite----------------------------")
+// console.table(queryanswer4); 
+// console.log(`Foram Encontrados ${queryanswer4.length} itens (Limite máximo: ${limite})`);
+
 
 
 } catch(erro){
