@@ -50,12 +50,22 @@ try{
     // const resultMany = await dbo.collection(colecao).deleteMany(queryDelete) ;
     // console.log(`${resultMany.deletedCount} Todos os Cursos de JavaScript foram Removidos`); 
 
-     const ordenacao = {curso:1}
-     const query2={}
-     const queryanswer = await dbo.collection(colecao).find(query2).sort(ordenacao).toArray()
+     const queryanswer = await dbo.collection(colecao).aggregate([
+        {
+            $lookup:{
+                from:'detalhesCursos', 
+                localField:'idcurso', 
+                foreignField:'idcurso', 
+                as:'Detalhes'
+            }
+        },
+        {
+            $sort:{curso:1} 
+        }
+     ]).toArray() 
 
      console.log("------------- Lista de cursos em ordem alfabetica -------------")
-     console.table(queryanswer)
+     console.dir(queryanswer,{depth:null}); 
 
      const ordenacao2 = {idcurso:1} 
      const query5 = {}
