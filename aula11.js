@@ -46,10 +46,13 @@ try{
 //      const queryanswer3 = await dbo.collection(colecao).updateOne(query3,novoObj); 
 //      console.log(`${queryanswer3.modifiedCount} Curso Devidamente Atualizado`); 
 
-    let query4 = {curso:/.t/}
-    let novoObj = {$set:{curso:"Curso de Linux"}}
-    const queryanswer4=await dbo.collection(colecao).updateMany(query4,novoObj)
-    console.log(`${queryanswer4.modifiedCount} Cursos Atualizados`)
+const limite = 3
+const query4 = {}
+const queryanswer4 = await dbo.collection(colecao).find(query4,{projection:{_id:0}}).limit(limite).toArray() 
+console.log("-----------------------Resultados Com Limite----------------------------")
+console.table(queryanswer4); 
+console.log(`Foram Encontrados ${queryanswer4.length} itens (Limite máximo: ${limite})`);
+
 
 } catch(erro){
     console.error("Erro na operação: ", erro); 
