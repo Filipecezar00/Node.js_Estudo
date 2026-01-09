@@ -13,27 +13,28 @@ try{
     const dbo = client.db("Cursos")
     const query = {linguagem:/.t/} 
 
-     let obj = [
-        {idcurso:1,curso:"Curso React",linguagem:"Javascript"}, 
-        {idcurso:2,curso:"Curso Windows",linguagem:"C++"}, 
-        {idcurso:3,curso:"Curso Java",linguagem:"Java"},
-        {idcurso:4,curso:"Curso Express.js",linguagem:"Javascript"},
-        {idcurso:5,curso:"Curso Kotlin",linguagem:"Kotlin"}, 
-        {idcurso:6,curso:"Angular",linguagem:"Javascript"}
-     ]
-     const result = await dbo.collection(colecao).insertMany(obj) 
-     console.log("Novos Cursos inseridos" + result.insertedCount)
+    //  let obj = [
+    //     {idcurso:1,curso:"Curso React",linguagem:"Javascript"}, 
+    //     {idcurso:2,curso:"Curso Windows",linguagem:"C++"}, 
+    //     {idcurso:3,curso:"Curso Java",linguagem:"Java"},
+    //     {idcurso:4,curso:"Curso Express.js",linguagem:"Javascript"},
+    //     {idcurso:5,curso:"Curso Kotlin",linguagem:"Kotlin"}, 
+    //     {idcurso:6,curso:"Angular",linguagem:"Javascript"}
+    //  ]
+    //  const result = await dbo.collection(colecao).insertMany(obj) 
+    //  console.log("Novos Cursos inseridos" + result.insertedCount)
 
-     obj=[
-        {idcurso:1,aulas:40}, 
-        {idcurso:2,aulas:50}, 
-        {idcurso:3,aulas:20}, 
-        {idcurso:4,aulas:35}, 
-        {idcurso:5,aulas:44}, 
-        {idcurso:6,aulas:120} 
-     ]
-     const result2 = await dbo.collection(colecao2).insertMany(obj)
-     console.log("Detalhes dos Cursos" + obj) 
+    //  obj=[
+    //     {idcurso:1,aulas:40}, 
+    //     {idcurso:2,aulas:50}, 
+    //     {idcurso:3,aulas:20}, 
+    //     {idcurso:4,aulas:35}, 
+    //     {idcurso:5,aulas:44}, 
+    //     {idcurso:6,aulas:120} 
+    //  ]
+    //  const result2 = await dbo.collection(colecao2).insertMany(obj)
+    //  console.log("Detalhes dos Cursos" + result2.insertedCount)  
+        
 
     // const resultado = await dbo.collection(colecao).find(query).toArray()  
     // console.log("Cursos Encontrados"); 
@@ -55,6 +56,12 @@ try{
 
      console.log("------------- Lista de cursos em ordem alfabetica -------------")
      console.table(queryanswer)
+
+     const ordenacao2 = {idcurso:1} 
+     const query5 = {}
+     const queryanswer2  = await dbo.collection(colecao2).find(query5).sort(ordenacao2).toArray() 
+     console.log("----------------------- Detalhes dos Cursos ----------------------")
+     console.table(queryanswer2) 
       
 //      let query3 = {curso:/.t/}; 
 //      let novoObj = { $set: {curso:'Curso de Hardware'}};   
