@@ -85,8 +85,6 @@ try{
 // console.table(queryanswer4); 
 // console.log(`Foram Encontrados ${queryanswer4.length} itens (Limite máximo: ${limite})`);
 
-
-
 } catch(erro){
     console.error("Erro na operação: ", erro); 
 }finally{
