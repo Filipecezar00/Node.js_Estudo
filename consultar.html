@@ -24,11 +24,12 @@
         const obterTodosRegistros = async()=>{
         const  resp = await fetch('http://127.0.0.1:1880/todosregistros')
         const respJson = await resp.json()
-        document.getElementById("dados").innerHTML = JSON.stringify(respJson); 
-        
+        const nomes = respJson.map(item=>`<p>Nome: ${item.nome} - Idade: ${item.idade}</p>`).join(''); 
+        document.getElementById("dados").innerHTML = JSON.stringify(nomes); 
+
         console.log(respJson); 
         }
-
+        
         obterTodosRegistros();
 
     </script>
