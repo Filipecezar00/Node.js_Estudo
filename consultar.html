@@ -13,6 +13,24 @@
         <a class="btn" href="consultar.html">Consultar</a>
     </div>
         <h1>Cursos - WebApp - Node Red</h1> 
-        <h2>Consultar</h2> 
+        <div id="filtro">
+          
+        </div>
+        <div id="dados">
+
+
+        </div>
+    <script>
+        const obterTodosRegistros = async()=>{
+        const  resp = await fetch('http://127.0.0.1:1880/todosregistros')
+        const respJson = await resp.json()
+        document.getElementById("dados").innerHTML = JSON.stringify(respJson); 
+        
+        console.log(respJson); 
+        }
+
+        obterTodosRegistros();
+
+    </script>
     </body>
 </html>
